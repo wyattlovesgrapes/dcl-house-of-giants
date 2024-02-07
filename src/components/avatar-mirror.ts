@@ -1,6 +1,6 @@
 import { AvatarShape, engine, Transform } from "@dcl/sdk/ecs"
 import { Vector3 } from "@dcl/sdk/math"
-import { getWearablesList } from "./check-user-data"
+import { getPlayerWearables } from "./check-player-data"
 
 export async function createAvatarStand(
     entity: any,
@@ -16,12 +16,7 @@ export async function createAvatarStand(
         wearables = wearablesArray
         console.log('the manaquin is wearing', wearablesArray)
     } else {
-        const { wearables: userWearables, error } = await getWearablesList()
-        if (!error) {
-            wearables = userWearables
-        } else {
-            console.log('Error occured while retrieving user wearables.')
-        }
+        wearables = getPlayerWearables()
     }
 
     AvatarShape.create(entity, {
