@@ -1,4 +1,4 @@
-import { checkIfWearing, getWearablesList } from "./check-user-data";
+import {  checkIfWearing } from "./check-player-data";
 import { pointerEventsSystem, InputAction, Animator } from '@dcl/sdk/ecs'
 import { frontDoor } from './environment'
 
@@ -18,7 +18,11 @@ export function makeDoorLock(
         },
         function () {
             // Call checkWearables
-            getWearablesList()
+            //getWearablesList()
+            let result = checkIfWearing('urn:decentraland:off-chain:base-avatars:f_blue_jacket')
+            console.log(result)
+
+            /*
             checkIfWearing('urn:decentraland:off-chain:base-avatars:thug_life')
                 .then(result => {
                     //console.log(result); // Now this should log the correct boolean value.
@@ -31,6 +35,7 @@ export function makeDoorLock(
                 .catch(error => {
                     console.error(error);
                 });
+                */
         }
     )
 }
